@@ -1,0 +1,60 @@
+<main>
+    <div class="trip-form">
+      <h2>Log New Trip</h2>
+      <form (ngSubmit)="addTrip()" #tripForm="ngForm">
+        <div class="form-group">
+          <label for="tripDate">Date:</label>
+          <input type="date" id="tripDate" name="tripDate" [(ngModel)]="newTrip.date" required />
+
+          <label for="startLocation">Start Location:</label>
+          <input type="text" id="startLocation" name="startLocation" [(ngModel)]="newTrip.startLocation" required />
+
+          <label for="endLocation">End Location:</label>
+          <input type="text" id="endLocation" name="endLocation" [(ngModel)]="newTrip.endLocation" required />
+
+          <label for="distance">Distance (km):</label>
+          <input type="number" id="distance" name="distance" [(ngModel)]="newTrip.distance" required />
+
+          <label for="fuelUsed">Fuel Used (L):</label>
+          <input type="number" id="fuelUsed" name="fuelUsed" [(ngModel)]="newTrip.fuelUsed" required />
+
+          <label for="cost">Total Cost (₹):</label>
+          <input type="number" id="cost" name="cost" [(ngModel)]="newTrip.cost" required />
+        </div>
+        <button type="submit" [disabled]="!tripForm.valid">Add Trip</button>
+      </form>
+    </div>
+
+    <div class="trip-list">
+      <h2>Trip History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Start Location</th>
+            <th>End Location</th>
+            <th>Distance (km)</th>
+            <th>Fuel Used (L)</th>
+            <th>Cost (₹)</th>
+            <th>Cost/km (₹)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let trip of trips; let i = index">
+              <td>{{ trip.date }}</td>
+              <td>{{ trip.startLocation }}</td>
+              <td>{{ trip.endLocation }}</td>
+              <td>{{ trip.distance }}</td>
+              <td>{{ trip.fuelUsed }}</td>
+              <td>{{ trip.cost }}</td>
+              <td>{{ (trip.cost / trip.distance) | number: '1.2-2' }}</td>
+              <td>
+                <button (click)="editTrip(i)" class="edit-btn">Edit</button>
+                <button style="margin-left: 10px;" (click)="deleteTrip(i)" class="delete-btn">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </main>

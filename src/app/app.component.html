@@ -1,0 +1,45 @@
+<nav class="navbar">
+  <div class="logo">
+    <span>Car Expense Tracker</span>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/expenses" routerLinkActive="active">Expenses</a>
+    <a routerLink="/fuel" routerLinkActive="active">Fuel</a>
+    <a routerLink="/maintenance" routerLinkActive="active">Maintenance</a>
+    <a routerLink="/trips" routerLinkActive="active">Trips</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a routerLink="/signup" routerLinkActive="active">Sign Up</a>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+<style>
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #19d26f;
+  padding: 10px 24px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links a.active,
+.nav-links a:hover {
+  background: #fff;
+  color: #19d26f;
+}
+</style>
